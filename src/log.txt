@@ -1,0 +1,19 @@
+@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:380 | ----------------WELCOME TO THE ONLINE LMS------------------
+@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:382 | //   1.Admin Login   //
+@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:384 | //   2.User Login    //
+@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:389 | Enter Login Type 
+@techdhaba 2022-11-24 10:03:41 | INFO    | login.cpp       | AdminLogin:72 | Enter Pin: 
+@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:380 | ----------------WELCOME TO THE ONLINE LMS------------------
+@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:382 | //   1.Admin Login   //
+@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:384 | //   2.User Login    //
+@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:389 | Enter Login Type 
+@techdhaba 2022-11-24 10:04:08 | INFO    | login.cpp       | AdminLogin:72 | Enter Pin: 
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:76 | Login Succesful
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:78 | ***
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:80 | *HELLO ADMIN*
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:82 | ***
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:84 | 1.Access Database
+
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:85 | 2.Customer Support
+
+@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:86 | Enter your choice
