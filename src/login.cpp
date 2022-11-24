@@ -155,7 +155,7 @@ void Menu()
             break;
         case 5:
             LOG_INFO("Thanks for using this program.\nThis program is created by GROUP-1 \n\n");
-            break;
+            exit(0);
         default:
             LOG_ERROR("You've made a mistake , Try again..\n");
             Menu();
@@ -164,7 +164,7 @@ void Menu()
 
 void UserMenu()
 {
-	cout<<"1.Retrieve Data"<<endl;
+	cout<<"\n1.Retrieve Data"<<endl;
         cout<<"2.Customer Support"<<endl;
         cout<<"3.Exit"<<endl;
         int Choice;
@@ -191,7 +191,7 @@ void UserMenu()
 void login()
 {
     int count;
-    string user,pass,u,p;
+    string user,pass,user_,pass_;
 
     LOG_INFO("Please enter the following details");
     cout<<endl;
@@ -202,9 +202,9 @@ void login()
     cin>>pass;
 
     ifstream input("database.txt");
-    while(input>>u>>p)
+    while(input>>user_>>pass_)
     {
-        if(u==user && p==pass)
+        if(user_==user && pass_==pass)
 
         {
             count = START_VALUE;
@@ -258,7 +258,7 @@ void login()
 void registr()
 {
 
-    string reguser,regpass,ru,rp;
+    string reguser,regpass,reg_user,reg_pass;
         
     LOG_INFO("Enter the username :");
     cin>>reguser;
@@ -292,14 +292,14 @@ void forgot()
         case 1:
         {
             int count=0;
-            string searchuser,su,sp;
+            string searchuser,search_user,search_pass;
             LOG_INFO("\nEnter your username :");
             cin>>searchuser;
 
             ifstream searchu("database.txt");
-            while(searchu>>su>>sp)
+            while(searchu>>search_user>>search_pass)
             {
-                if(su==searchuser)
+                if(search_user==searchuser)
                 {
                     count=START_VALUE;
                 }
@@ -309,7 +309,7 @@ void forgot()
             {
                 LOG_INFO("\n\nHurray, Account found\n");
                 LOG_INFO("\nYour password is ");
-                cout<<sp;
+                cout<<search_pass;
                 cin.get();
                 cin.get();
 
@@ -328,24 +328,24 @@ void forgot()
         case 2:
         {
             int count=0;
-            string searchpass,su2,sp2;
+            string searchpass,searchuser2,searchpass2;
             LOG_INFO("\nEnter the password :");
             cin>>searchpass;
 
             ifstream searchp("database.txt");
-            while(searchp>>su2>>sp2)
+            while(searchp>>searchuser2>>searchpass2)
             {
-                if(sp2==searchpass)
+                if(searchpass2==searchpass)
                 {
                     count=START_VALUE;
                 }
             }
             searchp.close();
-            if(count==1)
+            if(count==START_VALUE)
             {
                LOG_INFO("\nAccount found in the Database \n");
                 LOG_INFO("\nYour Id is : ");
-                cout<<su2;
+                cout<<searchuser2;
                 cin.get();
                 cin.get();
 

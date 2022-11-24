@@ -1,19 +1,70 @@
-@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:380 | ----------------WELCOME TO THE ONLINE LMS------------------
-@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:382 | //   1.Admin Login   //
-@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:384 | //   2.User Login    //
-@techdhaba 2022-11-24 10:03:35 | INFO    | login.cpp       | mainMenu:389 | Enter Login Type 
-@techdhaba 2022-11-24 10:03:41 | INFO    | login.cpp       | AdminLogin:72 | Enter Pin: 
-@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:380 | ----------------WELCOME TO THE ONLINE LMS------------------
-@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:382 | //   1.Admin Login   //
-@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:384 | //   2.User Login    //
-@techdhaba 2022-11-24 10:03:42 | INFO    | login.cpp       | mainMenu:389 | Enter Login Type 
-@techdhaba 2022-11-24 10:04:08 | INFO    | login.cpp       | AdminLogin:72 | Enter Pin: 
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:76 | Login Succesful
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:78 | ***
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:80 | *HELLO ADMIN*
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:82 | ***
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:84 | 1.Access Database
+@Group1 2022-11-24 15:11:10 | INFO    | login.cpp       | mainMenu:380 | ----------------WELCOME TO THE ONLINE LMS------------------
+@Group1 2022-11-24 15:11:10 | INFO    | login.cpp       | mainMenu:382 | //   1.Admin Login   //
+@Group1 2022-11-24 15:11:10 | INFO    | login.cpp       | mainMenu:384 | //   2.User Login    //
+@Group1 2022-11-24 15:11:10 | INFO    | login.cpp       | mainMenu:389 | Enter Login Type 
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:120 |              ***
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:122 |              *    Welcome to login page     **
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:124 |              ***
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:128 |                  *        MENU        ***
 
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:85 | 2.Customer Support
 
-@techdhaba 2022-11-24 10:04:14 | INFO    | login.cpp       | AdminLogin:86 | Enter your choice
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:129 | 1.LOGIN
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:131 | 2.REGISTER
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:133 | 3.FORGOT PASSWORD (or) USERNAME
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:135 | 4.Customer Support
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:137 | 5.Exit
+@Group1 2022-11-24 15:11:14 | INFO    | login.cpp       | Menu:139 | 
+Enter your choice :
+@Group1 2022-11-24 15:11:19 | INFO    | login.cpp       | forgot:281 | Forgot your password
+
+@Group1 2022-11-24 15:11:19 | INFO    | login.cpp       | forgot:282 | 1.Search your id by username
+@Group1 2022-11-24 15:11:19 | INFO    | login.cpp       | forgot:284 | 2.Search your id by password
+@Group1 2022-11-24 15:11:19 | INFO    | login.cpp       | forgot:286 | 3.Main menu
+@Group1 2022-11-24 15:11:19 | INFO    | login.cpp       | forgot:288 | Enter your choice :
+@Group1 2022-11-24 15:11:23 | INFO    | login.cpp       | forgot:296 | 
+Enter your username :
+@Group1 2022-11-24 15:11:28 | INFO    | login.cpp       | forgot:310 | 
+
+Hurray, Account found
+
+@Group1 2022-11-24 15:11:28 | INFO    | login.cpp       | forgot:311 | 
+Your password is 
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:120 |              ***
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:122 |              *    Welcome to login page     **
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:124 |              ***
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:128 |                  *        MENU        ***
+
+
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:129 | 1.LOGIN
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:131 | 2.REGISTER
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:133 | 3.FORGOT PASSWORD (or) USERNAME
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:135 | 4.Customer Support
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:137 | 5.Exit
+@Group1 2022-11-24 15:11:31 | INFO    | login.cpp       | Menu:139 | 
+Enter your choice :
+@Group1 2022-11-24 15:11:33 | INFO    | login.cpp       | forgot:281 | Forgot your password
+
+@Group1 2022-11-24 15:11:33 | INFO    | login.cpp       | forgot:282 | 1.Search your id by username
+@Group1 2022-11-24 15:11:33 | INFO    | login.cpp       | forgot:284 | 2.Search your id by password
+@Group1 2022-11-24 15:11:33 | INFO    | login.cpp       | forgot:286 | 3.Main menu
+@Group1 2022-11-24 15:11:33 | INFO    | login.cpp       | forgot:288 | Enter your choice :
+@Group1 2022-11-24 15:11:37 | INFO    | login.cpp       | forgot:332 | 
+Enter the password :
+@Group1 2022-11-24 15:11:39 | INFO    | login.cpp       | forgot:346 | 
+Account found in the Database 
+
+@Group1 2022-11-24 15:11:39 | INFO    | login.cpp       | forgot:347 | 
+Your Id is : 
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:120 |              ***
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:122 |              *    Welcome to login page     **
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:124 |              ***
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:128 |                  *        MENU        ***
+
+
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:129 | 1.LOGIN
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:131 | 2.REGISTER
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:133 | 3.FORGOT PASSWORD (or) USERNAME
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:135 | 4.Customer Support
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:137 | 5.Exit
+@Group1 2022-11-24 15:11:48 | INFO    | login.cpp       | Menu:139 | 
+Enter your choice :

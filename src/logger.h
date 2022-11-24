@@ -58,7 +58,7 @@ static inline char *timenow();
 #ifdef __OBJC__
 
 #if __has_feature(objc_arc)
-#define AUTORELEASEPOOL_BEGIN   @techdhaba {
+#define AUTORELEASEPOOL_BEGIN   @Group1 {
 #define AUTORELEASEPOOL_END     }
 #define RELEASE(OBJ)            OBJ = nil
 #else
@@ -76,7 +76,7 @@ static inline char *timenow();
                                         } while (0)
 #endif
 
-#define LOG_FMT             "@techdhaba %s | %-7s | %-15s | %s:%d | "
+#define LOG_FMT             "@Group1 %s | %-7s | %-15s | %s:%d | "
 #define LOG_ARGS(LOG_TAG)   timenow(), LOG_TAG, _FILE, __FUNCTION__, __LINE__
 
 #define NEWLINE     "\n"
