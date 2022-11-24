@@ -45,13 +45,18 @@ void Server()
     cout<<"Ending-----"<<endl;
 }
 
+/* 
+ * signal ctrl+c is used to return control to main menu
+ */
 void sigint_handler(int signal)
 {
 	cout << "\n\nCaught ^C\n " << endl;
 	cout << "Returning to main menu\n" << endl;
 	mainMenu();
 }
-
+/*
+ * ctrl+z signal is used to exit the program
+ */
 void sigtstp_handler(int signal)
 {
 	cout << "\n\nCaught ^Z\n "<< endl;
@@ -59,7 +64,12 @@ void sigtstp_handler(int signal)
 	exit(1);
 }
 
-
+/*
+ * login code for admin
+ *login credentials checking
+ *given access over database
+ *insert/retrieve/delete data from database
+ */
 void AdminLogin()
 {
     int Pin=PIN;
@@ -113,7 +123,13 @@ void AdminLogin()
     }
 }
 
-
+/*
+ *User code
+ *registration of user with valid credentials
+ *login with valid credentials
+ *can recover credentials by providing proper registration credentials
+ *Customer support is provided to resolve issues
+ */
 void Menu()
 {
     int choice;
@@ -155,16 +171,19 @@ void Menu()
             break;
         case 5:
             LOG_INFO("Thanks for using this program.\nThis program is created by GROUP-1 \n\n");
-            exit(0);
+            break;
         default:
             LOG_ERROR("You've made a mistake , Try again..\n");
             Menu();
     }
 }
-
+/*menu for user after logged in with valid credentials
+ * can retrieve book URLs to download books digitally
+ * Utilize customer support
+ */
 void UserMenu()
 {
-	cout<<"\n1.Retrieve Data"<<endl;
+	cout<<"1.Retrieve Data"<<endl;
         cout<<"2.Customer Support"<<endl;
         cout<<"3.Exit"<<endl;
         int Choice;
@@ -187,7 +206,9 @@ void UserMenu()
 
 
 }
-
+/*function for login credentials
+ * need to register to download books with valid credentials
+ */
 void login()
 {
     int count;
@@ -200,7 +221,7 @@ void login()
     cin>>user;
     LOG_INFO("PASSWORD :");
     cin>>pass;
-
+	//file created to store registered details of user
     ifstream input("database.txt");
     while(input>>user_>>pass_)
     {
@@ -254,7 +275,9 @@ void login()
 }
 
 
-
+/*function for regitration
+ * user needs to register with valid credentials
+ */
 void registr()
 {
 
@@ -272,7 +295,7 @@ void registr()
     LOG_INFO("\nRegistration Sucessful\n");
     Menu();
 }
-
+/*user can recover either password or username by providing valid registered credential*/
 
 void forgot()
 {
@@ -295,7 +318,7 @@ void forgot()
             string searchuser,search_user,search_pass;
             LOG_INFO("\nEnter your username :");
             cin>>searchuser;
-
+	//Database is used to store registered credentials of user
             ifstream searchu("database.txt");
             while(searchu>>search_user>>search_pass)
             {
@@ -305,7 +328,7 @@ void forgot()
                 }
             }
             searchu.close();
-            if(count==1)
+            if(count==START_VALUE)
             {
                 LOG_INFO("\n\nHurray, Account found\n");
                 LOG_INFO("\nYour password is ");
@@ -341,7 +364,7 @@ void forgot()
                 }
             }
             searchp.close();
-            if(count==START_VALUE)
+            if(count==1)
             {
                LOG_INFO("\nAccount found in the Database \n");
                 LOG_INFO("\nYour Id is : ");
@@ -374,7 +397,9 @@ void forgot()
             forgot();
     }
 }
-
+/*Main menu
+ *menu for admin or user
+ */
 void mainMenu()
 {
     LOG_INFO("----------------WELCOME TO THE ONLINE LMS------------------");
@@ -406,15 +431,16 @@ void mainMenu()
 
 
 
-
+//main code
 int main()
 {
-    LOG_INIT();
+    LOG_INIT(); //Initialization for loggers
 
-    mainMenu();
-    signal(SIGINT, sigint_handler);
-    signal(SIGTSTP, sigtstp_handler);
+    mainMenu();   //Menu for admin and user
+    signal(SIGINT, sigint_handler);  //signal call ctrl+c
+    signal(SIGTSTP, sigtstp_handler);  //ctrl+z
     
-    LOG_DEINIT();
+    LOG_DEINIT();   //Deinitialization of loggers
     return 0;
 }
+

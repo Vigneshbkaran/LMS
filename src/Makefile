@@ -1,10 +1,10 @@
 CC=g++
 CFLAGS=-c -Wall
 
-all: lms server client
+all: eBooks server client
 
-lms: login.cpp Database.o
-	$(CC) login.cpp Database.o -o lms -l sqlite3
+eBooks: main.cpp Database.o
+	$(CC) main.cpp Database.o -o eBooks -l sqlite3
 
 Database.o: Database.cpp
 	$(CC) $(CFLAGS) Database.cpp -l sqlite3
@@ -15,3 +15,5 @@ server: server.cpp
 client: client.cpp
 	$(CC) client.cpp -o client
 
+clean:
+	rm *.o
