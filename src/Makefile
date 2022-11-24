@@ -16,4 +16,4 @@ client: client.cpp
 	$(CC) client.cpp -o client
 
 clean:
-	rm *.o
+	rm *.o eBooks server client
