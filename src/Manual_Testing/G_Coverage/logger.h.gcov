@@ -1,0 +1,143 @@
+        -:    0:Source:logger.h
+        -:    0:Graph:main.gcno
+        -:    0:Data:main.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:#ifndef _MACROLOGGER_H_
+        -:    2:#define _MACROLOGGER_H_
+        -:    3:
+        -:    4:#ifdef _OBJC_
+        -:    5:#import <Foundation/Foundation.h>
+        -:    6:#else
+        -:    7:#include <time.h>
+        -:    8:#include<stdio.h>
+        -:    9:#include <string.h>
+        -:   10:#include <stdarg.h>
+        -:   11:#include<unistd.h>
+        -:   12:#endif
+        -:   13:#define LOG_FILE_NAME "log.txt"
+        -:   14:static FILE *logfile=NULL;
+        3:   15:void LOG_INIT(void)
+        -:   16:{
+        -:   17:    static int cnt=0;
+        3:   18:    if (access(LOG_FILE_NAME, F_OK) == 0)
+        -:   19:    {
+        -:   20:        //printf("enter1");
+        3:   21:        logfile = fopen(LOG_FILE_NAME,"w+");
+        3:   22:        cnt=1;
+        -:   23:    }
+        -:   24:    else{
+    #####:   25:        logfile = fopen(LOG_FILE_NAME,"a+");
+        -:   26:         //printf("enter2");
+        -:   27:    }
+        3:   28:}
+    #####:   29:void LOG_DEINIT(void){
+    #####:   30:    fclose(logfile);
+    #####:   31:}
+    #####:   32:void log(const char *fmt, ...)
+        -:   33:{
+        -:   34:    va_list args;
+        -:   35:
+    #####:   36:    va_start(args, fmt);
+    #####:   37:    vfprintf(stderr, fmt, args);
+    #####:   38:    va_end(args);
+        -:   39:
+    #####:   40:    va_start(args, fmt);
+    #####:   41:    vfprintf(logfile, fmt, args);
+    #####:   42:    va_end(args);
+    #####:   43:}
+        -:   44:// === auxiliar functions
+        -:   45:static inline char *timenow();
+        -:   46:
+        -:   47:#define _FILE strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__
+        -:   48:
+        -:   49:#define NO_LOG          0x00
+        -:   50:#define ERROR_LEVEL     0x01
+        -:   51:#define INFO_LEVEL      0x02
+        -:   52:#define DEBUG_LEVEL     0x03
+        -:   53:
+        -:   54:#ifndef LOG_LEVEL
+        -:   55:#define LOG_LEVEL   DEBUG_LEVEL
+        -:   56:#endif
+        -:   57:
+        -:   58:#ifdef __OBJC__
+        -:   59:
+        -:   60:#if __has_feature(objc_arc)
+        -:   61:#define AUTORELEASEPOOL_BEGIN   @Group1 {
+        -:   62:#define AUTORELEASEPOOL_END     }
+        -:   63:#define RELEASE(OBJ)            OBJ = nil
+        -:   64:#else
+        -:   65:#define AUTORELEASEPOOL_BEGIN   NSAutoreleasePool *_pool = [[NSAutoreleasePool alloc] init];
+        -:   66:#define AUTORELEASEPOOL_END     [_pool release];
+        -:   67:#define RELEASE(OBJ)            [OBJ release];
+        -:   68:#endif
+        -:   69:
+        -:   70:#define PRINTFUNCTION(format, ...)      objc_print(@format, __VA_ARGS__)
+        -:   71:#else
+        -:   72:///#define PRINTFUNCTION(format, ...)      fprintf(stderr, format, __VA_ARGS__)
+        -:   73:#define PRINTFUNCTION(fmt, ...)      do {                                       \
+        -:   74:                                            fprintf(stderr, fmt, __VA_ARGS__);  \
+        -:   75:                                            fprintf(logfile, fmt, __VA_ARGS__);  \
+        -:   76:                                        } while (0)
+        -:   77:#endif
+        -:   78:
+        -:   79:#define LOG_FMT             "@Group1 %s | %-7s | %-15s | %s:%d | "
+        -:   80:#define LOG_ARGS(LOG_TAG)   timenow(), LOG_TAG, _FILE, __FUNCTION__, __LINE__
+        -:   81:
+        -:   82:#define NEWLINE     "\n"
+        -:   83:
+        -:   84:#define ERROR_TAG   "ERROR"
+        -:   85:#define INFO_TAG    "INFO"
+        -:   86:#define DEBUG_TAG   "DEBUG"
+        -:   87:
+        -:   88:#if LOG_LEVEL >= DEBUG_LEVEL
+        -:   89:#define LOG_DEBUG(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(DEBUG_TAG), ## args)
+        -:   90:#else
+        -:   91:#define LOG_DEBUG(message, args...)
+        -:   92:#endif
+        -:   93:
+        -:   94:#if LOG_LEVEL >= INFO_LEVEL
+        -:   95:#define LOG_INFO(message, args...)      PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(INFO_TAG), ## args)
+        -:   96:#else
+        -:   97:#define LOG_INFO(message, args...)
+        -:   98:#endif
+        -:   99:
+        -:  100:#if LOG_LEVEL >= ERROR_LEVEL
+        -:  101:#define LOG_ERROR(message, args...)     PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
+        -:  102:#else
+        -:  103:#define LOG_ERROR(message, args...)
+        -:  104:#endif
+        -:  105:
+        -:  106:#if LOG_LEVEL >= NO_LOGS
+        -:  107:#define LOG_IF_ERROR(condition, message, args...) if (condition) PRINTFUNCTION(LOG_FMT message NEWLINE, LOG_ARGS(ERROR_TAG), ## args)
+        -:  108:#else
+        -:  109:#define LOG_IF_ERROR(condition, message, args...)
+        -:  110:#endif
+        -:  111:
+       84:  112:static inline char *timenow() {
+        -:  113:    static char buffer[64];
+        -:  114:    time_t rawtime;
+        -:  115:    struct tm *timeinfo;
+       84:  116:    time(&rawtime);
+       84:  117:    timeinfo = localtime(&rawtime);
+       84:  118:    strftime(buffer, 64, "%Y-%m-%d %H:%M:%S", timeinfo);
+       84:  119:    return buffer;
+        -:  120:}
+        -:  121:
+        -:  122:#ifdef _OBJC_
+        -:  123:
+        -:  124:static inline void objc_print(NSString *format, ...) {
+        -:  125:    AUTORELEASEPOOL_BEGIN
+        -:  126:    va_list args;
+        -:  127:    va_start(args, format);
+        -:  128:    NSString *logStr = [[NSString alloc] initWithFormat:format arguments:args];
+        -:  129:    fprintf(stderr, "%s", [logStr UTF8String]);
+        -:  130:    RELEASE(logStr);
+        -:  131:    va_end(args);
+        -:  132:    AUTORELEASEPOOL_END
+        -:  133:}
+        -:  134:
+        -:  135:#endif
+        -:  136:
+        -:  137:#endif
+        -:  138:
