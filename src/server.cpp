@@ -17,105 +17,90 @@ using namespace std;
 int connfd;
 
 // Function designed for chat between client and server.
-void func(int connfd)
-{
+void func(int connfd) {
     char buff[MAX];
     int n;
     // infinite loop for chat
     for (;;) {
         bzero(buff, MAX);
-   
         // read the message from client and copy it in buffer
         read(connfd, buff, sizeof(buff));
         // print buffer which contains the client contents
-        cout<<"Admin: "<<buff<<endl;
-	if (strncmp("exit", buff, 4) == 0) {
-            cout<<"Server Exit..."<<endl;
+        cout << "Admin: " << buff << endl;
+        if (strncmp("exit", buff, 4) == 0) {
+            cout << "Server Exit..." << endl;
             break;
         }
-	cout<<"to client: ";
+        cout << "to client: ";
         bzero(buff, MAX);
         n = 0;
         // copy server message in the buffer
-        while ((buff[n++] = getchar()) != '\n')
-            ;
-   
+        while ((buff[n++] = getchar()) != '\n');
         // and send that buffer to client
-        write(connfd, buff, sizeof(buff));
-   
+        write(connfd, buff, sizeof(buff));  
         // if msg contains "exit" then server exit and chat ended.
         if (strncmp("exit", buff, 4) == 0) {
-            cout<<"Closing Server connection"<<endl;
-	    cout << "Program exited successfully..." << endl;
+            cout << "Closing Server connection" << endl;
+            cout << "Program exited successfully..." << endl;
             break;
         }
     }
 }
 
-void sigtstp_handler(int signal)
-{
-	char msg[MAX];
-	strcpy(msg, "exit");
-	cout << "\nCaught ^Z "<< endl;
-	cout << "Closing server connection " <<endl;
-	write(connfd, msg, sizeof(msg));	
-	exit(0);
+void sigtstp_handler(int signal) {
+        char msg[MAX];
+        strcpy(msg, "exit");
+        cout << "\nCaught ^Z " << endl;
+        cout << "Closing server connection " << endl;
+        write(connfd, msg, sizeof(msg));	
+        exit(0);
 }
 
-
-   
 // Driver function
-int main()
-{
-   
+int main() {
     int sockfd;
     signal(SIGTSTP, sigtstp_handler);
     struct sockaddr_in servaddr, cli;
-   socklen_t clilen;
+    socklen_t clilen;
     // socket create and verification
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
-        cout<<"socket creation failed..."<<endl;
+        cout << "socket creation failed..." << endl;
         exit(0);
     }
     else
-        cout<<"Socket successfully created.."<<endl;
+        cout << "Socket successfully created.." << endl;
     bzero(&servaddr, sizeof(servaddr));
-   
     // assign IP, PORT
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
     servaddr.sin_port = htons(PORT);
-   
     // Binding newly created socket to given IP and verification
     if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) {
-        cerr<<"socket bind failed..."<<endl;
+        cerr << "socket bind failed..." << endl;
         exit(0);
     }
     else
-        cout<<"Socket successfully binded.."<<endl;
-   
+        cout << "Socket successfully binded.." << endl;
     // Now server is ready to listen and verification
     if ((listen(sockfd, 5)) != 0) {
-        cerr<<"Listen failed..."<<endl;
+        cerr << "Listen failed..." << endl;
         exit(0);
     }
     else
-        cout<<"Server listening.."<<endl;
-    //len = sizeof(cli);
-   clilen = sizeof(cli);
+        cout << "Server listening.." << endl;
+    // len = sizeof(cli);
+    clilen = sizeof(cli);
     // Accept the data packet from client and verification
     connfd = accept(sockfd, (SA*)&cli, &clilen);
     if (connfd < 0) {
-        cerr<<"server accept failed..."<<endl;
+        cerr << "server accept failed..." << endl;
         exit(0);
     }
     else
-        cout<<"Connection established successfully..."<<endl;
-   
+        cout << "Connection established successfully..." << endl;
     // Function for chatting between client and server
-    func(connfd);
-   
+    func(connfd); 
     // After chatting close the socket
     close(sockfd);
 }
